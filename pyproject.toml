@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "call_joiner"
+version = "0.1.0"
+description = ""
+authors = ["Alisher A. Khassanov <alisher@merklebot.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydantic = "^1.8.2"
+selenium = "^3.141.0"
+google-api-python-client = "^2.24.0"
+google-auth-httplib2 = "^0.1.0"
+google-auth-oauthlib = "^0.4.6"
+loguru = "^0.5.3"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
