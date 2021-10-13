@@ -1,6 +1,15 @@
 from pydantic import BaseSettings
 
 
+class GoogleMeetCredentials(BaseSettings):
+    EMAIL: str
+    PASSWORD: str
+
+    class Config:
+        env_prefix = "GOOGLE_MEET_CREDS_"
+        case_sensitive = True
+
+
 class GoogleCalendarCredentials(BaseSettings):
     PROJECT_ID: str
     PRIVATE_KEY_ID: str
@@ -28,6 +37,7 @@ class GoogleCalendar(BaseSettings):
 class Settings(BaseSettings):
     CHROMIUM_DRIVER: str
     GOOGLE_CALENDAR: GoogleCalendar
+    GOOGLE_MEET_CREDS: GoogleMeetCredentials
 
     class Config:
         case_sensitive = True
@@ -36,5 +46,6 @@ class Settings(BaseSettings):
 settings = Settings(
     GOOGLE_CALENDAR=GoogleCalendar(
         CREDENTIALS=GoogleCalendarCredentials()
-    )
+    ),
+    GOOGLE_MEET_CREDS=GoogleMeetCredentials(),
 )
