@@ -13,6 +13,9 @@ class GoogleMeet:
     def __init__(self, webdriver: WebDriver):
         self.webdriver = webdriver
 
+    def quit(self):
+        self.webdriver.quit()
+
     def join_call(self, url: str):
         self.webdriver.get("https://accounts.google.com/ServiceLogin")
         email_input = WebDriverWait(self.webdriver, 10).until(
