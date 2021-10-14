@@ -1,5 +1,7 @@
 FROM python:3.9-bullseye
 
+LABEL org.opencontainers.image.source="https://github.com/merklebot/call_joiner"
+
 ARG APP_PATH=/github.com/merklebot/call_joiner/
 
 ENV PYTHONUNBUFFERED=1 \
