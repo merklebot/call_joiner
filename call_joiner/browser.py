@@ -36,7 +36,8 @@ class GoogleMeet:
         )
         next_button.click()
 
-        while True:
+        t1 = time.time()
+        while time.time() - t1 < 60:
             try:
                 self.webdriver.get(url)
                 time.sleep(3)
