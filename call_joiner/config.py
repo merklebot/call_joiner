@@ -26,7 +26,7 @@ class GoogleCalendarCredentials(BaseSettings):
 
 class GoogleCalendar(BaseSettings):
     NOTIFICATIONS_WEBHOOK_ENDPOINT: str
-    WEBHOOK_EXPIRATION_SECONDS: str
+    NOTIFICATIONS_WEBHOOK_EXPIRATION_SECONDS: str
     CREDENTIALS: GoogleCalendarCredentials
 
     class Config:
