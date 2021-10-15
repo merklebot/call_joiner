@@ -58,5 +58,5 @@ class GoogleMeet:
                 )
                 join_button.click()
                 break
-            except ElementNotInteractableException as e:
+            except (ElementNotInteractableException, TimeoutException):
                 pass
