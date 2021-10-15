@@ -30,8 +30,8 @@ class GoogleMeet:
                 EC.presence_of_element_located((By.XPATH, "//input[@type='email']"))
             )
             email_input.send_keys(settings.GOOGLE_MEET_CREDS.EMAIL)
-            next_button = self.webdriver.find_element_by_xpath(
-                "//*[@id='identifierNext']/div/button"
+            next_button = WebDriverWait(self.webdriver, 10).until(
+                EC.presence_of_element_located((By.XPATH, "//*[@id='identifierNext']/div/button"))
             )
             next_button.click()
             time.sleep(2)
