@@ -2,7 +2,8 @@ version: "3.8"
 
 services:
   call-joiner:
-    image: ghcr.io/merklebot/call_joiner:main
+    # image: ghcr.io/merklebot/call_joiner:main
+    build: .
     restart: always
     env_file:
       - .env
