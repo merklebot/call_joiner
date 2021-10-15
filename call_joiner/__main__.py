@@ -38,6 +38,12 @@ if __name__ == "__main__":
     log.info("Starting")
 
     options = ChromeOptions()
+    # options.headless = True
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-gpu")
+    options.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36"
+                         " (KHTML, like Gecko) Chrome/94.0.4606.71 Safari/537.36")
     options.add_experimental_option("prefs", {
         "profile.default_content_setting_values.media_stream_mic": 1,
         "profile.default_content_setting_values.media_stream_camera": 1,
