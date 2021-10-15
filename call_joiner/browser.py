@@ -16,6 +16,13 @@ class GoogleMeet:
     def quit(self):
         self.webdriver.quit()
 
+    def close_all_tabs(self):
+        self.webdriver.execute_script("window.open('')")
+        for tab in self.webdriver.window_handles[:-1]:
+            self.webdriver.switch_to.window(tab)
+            self.webdriver.close()
+        self.webdriver.switch_to.window(self.webdriver.window_handles[0])
+
     def join_call(self, url: str):
         self.webdriver.get("https://accounts.google.com/ServiceLogin")
         email_input = WebDriverWait(self.webdriver, 10).until(

@@ -25,12 +25,12 @@ class CallJoiner:
                 if event.conference_link != self.ongoing_call:
                     log.info(f"New event {event.title} with conference {event.conference_link}, attendees {list(event.attendees)}")
                     self.ongoing_call = event.conference_link
-                    self.google_meet.quit()
+                    self.google_meet.close_all_tabs()
                     self.join_call()
             elif self.ongoing_call:
                 log.info(f"Call {self.ongoing_call} finished")
                 self.ongoing_call = None
-                self.google_meet.quit()
+                self.google_meet.close_all_tabs()
             time.sleep(3)
 
 
