@@ -20,17 +20,20 @@ class CallJoiner:
 
     def spin(self):
         while True:
-            self.calendar.sync()
-            if event := self.calendar.ongoing_event:
-                if event.conference_link != self.ongoing_call:
-                    log.info(f"New event {event.title} with conference {event.conference_link}, attendees {list(event.attendees)}")
-                    self.ongoing_call = event.conference_link
+            try:
+                self.calendar.sync()
+                if event := self.calendar.ongoing_event:
+                    if event.conference_link != self.ongoing_call:
+                        log.info(f"New event {event.title} with conference {event.conference_link}, attendees {list(event.attendees)}")
+                        self.ongoing_call = event.conference_link
+                        self.google_meet.close_all_tabs()
+                        self.join_call()
+                elif self.ongoing_call:
+                    log.info(f"Call {self.ongoing_call} finished")
+                    self.ongoing_call = None
                     self.google_meet.close_all_tabs()
-                    self.join_call()
-            elif self.ongoing_call:
-                log.info(f"Call {self.ongoing_call} finished")
-                self.ongoing_call = None
-                self.google_meet.close_all_tabs()
+            except Exception as e:
+                log.exception(e)
             time.sleep(3)
 
 
